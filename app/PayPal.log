@@ -1,0 +1,276 @@
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.22;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":34,"details":{"subtotal":34}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":1,"price":34}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.22;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer 9fBxTBFov.cCHnnYqFivi-BbGO2oRkuojUvev9GTUU0
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 324413913615781121
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Transport\PPRestCall: {"id":"PAY-7LT91380AV338313AKLXH4MY","create_time":"2014-02-02T17:19:47Z","update_time":"2014-02-02T17:19:47Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"34.00","currency":"PHP","details":{"subtotal":"34.00"}},"description":"This is the payment description.","item_list":{"items":[{"name":"Bus Reservation Ticket-","price":"34.00","currency":"PHP","quantity":"1"}]}}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-7LT91380AV338313AKLXH4MY","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-9UK851708F011593F","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-7LT91380AV338313AKLXH4MY/execute","rel":"execute","method":"POST"}]}
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.22;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":34,"details":{"subtotal":34}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":1,"price":34}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.22;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer aOLDe7sJAhsRJuIIgp7tP.mYvgRTgRW1Ct86HmwqlMU
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 1832139144142451174
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Transport\PPRestCall: {"id":"PAY-99024726VY337652NKLX3MFY","create_time":"2014-02-03T15:30:31Z","update_time":"2014-02-03T15:30:31Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"34.00","currency":"PHP","details":{"subtotal":"34.00"}},"description":"This is the payment description.","item_list":{"items":[{"name":"Bus Reservation Ticket-","price":"34.00","currency":"PHP","quantity":"1"}]}}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-99024726VY337652NKLX3MFY","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-96X19788CC545312P","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-99024726VY337652NKLX3MFY/execute","rel":"execute","method":"POST"}]}
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":445,"details":{"subtotal":445}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":1,"price":445}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer -ejjedKuFCubbAtahU4DeTAiXNLfv.h2J78HI6t2-ro
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 1708139166423061528
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Transport\PPRestCall: {"id":"PAY-542278792Y070412JKLZRY4I","create_time":"2014-02-06T05:24:01Z","update_time":"2014-02-06T05:24:02Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"445.00","currency":"PHP","details":{"subtotal":"445.00"}},"description":"This is the payment description.","item_list":{"items":[{"name":"Bus Reservation Ticket-","price":"445.00","currency":"PHP","quantity":"1"}]}}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-542278792Y070412JKLZRY4I","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-67K78838ND278204M","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-542278792Y070412JKLZRY4I/execute","rel":"execute","method":"POST"}]}
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":1,"price":240}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer Hz3WMhYo.q7L0R9fVx6RAy7w09acIpkAmdpmhWjPtYk
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 3344139186761833834
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Transport\PPRestCall: {"id":"PAY-3FC85958PU342921YKL3DN2A","create_time":"2014-02-08T13:53:44Z","update_time":"2014-02-08T13:53:44Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"240.00","currency":"PHP","details":{"subtotal":"240.00"}},"description":"This is the payment description.","item_list":{"items":[{"name":"Bus Reservation Ticket-","price":"240.00","currency":"PHP","quantity":"1"}]}}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-3FC85958PU342921YKL3DN2A","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-3E53129044118973T","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-3FC85958PU342921YKL3DN2A/execute","rel":"execute","method":"POST"}]}
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":1,"price":240}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer mvpa3j3X2qKqInIthUw5jmnmbbQ1VmIK5roHBJh4DZE
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 359613927550941745
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Transport\PPRestCall: {"id":"PAY-1LS507766W054863WKMB4DGY","create_time":"2014-02-18T20:24:59Z","update_time":"2014-02-18T20:24:59Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"240.00","currency":"PHP","details":{"subtotal":"240.00"}},"description":"This is the payment description.","item_list":{"items":[{"name":"Bus Reservation Ticket-","price":"240.00","currency":"PHP","quantity":"1"}]}}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-1LS507766W054863WKMB4DGY","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-8SR927001K8732110","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-1LS507766W054863WKMB4DGY/execute","rel":"execute","method":"POST"}]}
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":"5","price":"555"}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer latrYj2DlKdLXrDarUgkVqFSu1wrUY9iAAJ5AXXbUAM
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 3596139275560163046
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":"5","price":"555"}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer wS1e6-d04bw8FNpTWWaHlw2f6cT-4ZP3tCowy2Uq8g8
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 3596139275562820815
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":"5","price":"555"}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer .NAkhYg4fT3-t4njpMOeuwTYE9I2i3-RPalMWibVNSw
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 3596139275582246120
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":"2","price":"240"}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer gm.fx.rR2-1T63Y8Qw57ItosAQChAPDUsGWXKJAG4jQ
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 3596139275724357358
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":"2","price":"240"}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer pf2YPF0zHN-yJ.cHGvKVhQTK4VitGGomdmAdWjvvZ1s
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 359613927574844226
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":1,"price":"240"}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer v6Zqn5fdt4ZDewC7eDM0fnWgYJXhEqdwaYQWUWF7WME
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 3596139275751613429
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Transport\PPRestCall: {"id":"PAY-4K488765P8208460XKMB4WEI","create_time":"2014-02-18T21:05:21Z","update_time":"2014-02-18T21:05:21Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"240.00","currency":"PHP","details":{"subtotal":"240.00"}},"description":"This is the payment description.","item_list":{"items":[{"name":"Bus Reservation Ticket-","price":"240.00","currency":"PHP","quantity":"1"}]}}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-4K488765P8208460XKMB4WEI","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-2TS79355VW872135W","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-4K488765P8208460XKMB4WEI/execute","rel":"execute","method":"POST"}]}
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":2,"price":"240"}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer oAGTcCkqLKvf9pkQ25KK13OyxHFjFnxQZVpG4XOME84
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 3596139275762148484
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":1,"price":"240"}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer NgwLIjHBdX7sdBLq8pEpqjde1hphHfVfGtwBgz7FMVU
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 3596139275773658444
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Transport\PPRestCall: {"id":"PAY-19V24348096461623KMB4X3A","create_time":"2014-02-18T21:09:00Z","update_time":"2014-02-18T21:09:00Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"240.00","currency":"PHP","details":{"subtotal":"240.00"}},"description":"This is the payment description.","item_list":{"items":[{"name":"Bus Reservation Ticket-","price":"240.00","currency":"PHP","quantity":"1"}]}}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-19V24348096461623KMB4X3A","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-3BV42616BN295420L","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-19V24348096461623KMB4X3A/execute","rel":"execute","method":"POST"}]}
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":2,"price":"490"}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer QZ-JM7HQRmuN0kBUz5bGj6HK5t8m8pTwiWpS3Z4gGB4
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 3596139275780334298
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":2,"price":"490"}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer PGxdSd9x00bNYDMaObYFSfXACjXAj1vrbyh91.7Ht-w
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 3596139275788157663
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":2,"price":"490"}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer oAlOEYA24CRQ33UZTIuoeHw.XordLGBNvRNZQGeJfJA
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 3596139275790627326
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":1,"price":240}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer 1c7FvMJUHqeM39iRHxHvy6l16kRkYt2n93yvLXxXJEY
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 3596139275942023401
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Transport\PPRestCall: {"id":"PAY-77X48989FA012124RKMB5FAI","create_time":"2014-02-18T21:37:05Z","update_time":"2014-02-18T21:37:05Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"240.00","currency":"PHP","details":{"subtotal":"240.00"}},"description":"This is the payment description.","item_list":{"items":[{"name":"Bus Reservation Ticket-","price":"240.00","currency":"PHP","quantity":"1"}]}}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-77X48989FA012124RKMB5FAI","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-4UF12353WN2732633","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-77X48989FA012124RKMB5FAI/execute","rel":"execute","method":"POST"}]}
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":1,"price":240}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer Tn9bnsByPmE.7O9IYm-hPoYNjvy1gziwGJ4MeWV1G3E
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 3596139276037233920
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Transport\PPRestCall: {"id":"PAY-7A521528NH2959246KMB5MOA","create_time":"2014-02-18T21:52:56Z","update_time":"2014-02-18T21:52:56Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"240.00","currency":"PHP","details":{"subtotal":"240.00"}},"description":"This is the payment description.","item_list":{"items":[{"name":"Bus Reservation Ticket-","price":"240.00","currency":"PHP","quantity":"1"}]}}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-7A521528NH2959246KMB5MOA","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-1J210163PX1677911","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-7A521528NH2959246KMB5MOA/execute","rel":"execute","method":"POST"}]}
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":1,"price":240}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer EDK.ezCVIK2CClGz2qf9coh5i6I7Iug1tP78sPe7pNE
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 3596139276044223892
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Transport\PPRestCall: {"id":"PAY-0UR06716F50515402KMB5M7Q","create_time":"2014-02-18T21:54:06Z","update_time":"2014-02-18T21:54:06Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"240.00","currency":"PHP","details":{"subtotal":"240.00"}},"description":"This is the payment description.","item_list":{"items":[{"name":"Bus Reservation Ticket-","price":"240.00","currency":"PHP","quantity":"1"}]}}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-0UR06716F50515402KMB5M7Q","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-4GE69570WY633314T","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-0UR06716F50515402KMB5M7Q/execute","rel":"execute","method":"POST"}]}
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpaSVNCQUdKQnRGdURieFA1V3lzYjJNV0RhS0J3MzktbUpwMHZmTlNlbmItc1dMUklIM1RSZWVnbXl1OkVQWUZDeEF3Vm5oLWw4ZWROVDNpV1ZUZzdONGxyRVZmMU95anNiQ0hHRVZWZXdOYnliM2JNS0dDck5MSg==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"paypal"},"redirect_urls":{"return_url":"http:\/\/localhost\/laravel\/public\/payment\/executepaymentsuccess","cancel_url":"http:\/\/localhost\/laravel\/public\/executepaymentcancel"},"transactions":[{"amount":{"currency":"PHP","total":240,"details":{"subtotal":240}},"item_list":{"items":[{"name":"Bus Reservation Ticket-","currency":"PHP","quantity":1,"price":240}]},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer .F7sv0YDU2AhbhyvE0jqCnzeQEGotuBGTSOzkcsLQc8
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 3596139276046155351
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Transport\PPRestCall: {"id":"PAY-2MF61475GE845323EKMB5NEA","create_time":"2014-02-18T21:54:24Z","update_time":"2014-02-18T21:54:24Z","state":"created","intent":"sale","payer":{"payment_method":"paypal","payer_info":{"shipping_address":{}}},"transactions":[{"amount":{"total":"240.00","currency":"PHP","details":{"subtotal":"240.00"}},"description":"This is the payment description.","item_list":{"items":[{"name":"Bus Reservation Ticket-","price":"240.00","currency":"PHP","quantity":"1"}]}}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-2MF61475GE845323EKMB5NEA","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-8LJ70871J5112174D","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-2MF61475GE845323EKMB5NEA/execute","rel":"execute","method":"POST"}]}

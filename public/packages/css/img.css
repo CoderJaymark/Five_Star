@@ -1,0 +1,87 @@
+
+img.circ{
+	list-style:none;
+	width:25px;
+	height: 25px;
+	background:url('../images/coomon_sprite.png') -16px 2px no-repeat;
+
+	
+}
+
+
+img.available{
+	list-style:none;
+	width:25px;
+	height: 25px;
+	margin:-1px 4px 0 0;
+	background:url('../images/coomon_sprite.png') 0px -23px no-repeat;
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg); /* IE 9 */
+	-webkit-transform:rotate(90deg); /* Safari and Chrome */
+	
+		
+}
+
+
+img.selected{
+	list-style:none;
+	width:25px;
+	height: 25px;
+	margin:-1px 4px 0 0;
+	background:url('../images/coomon_sprite.png') -25px -47px no-repeat;
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg); /* IE 9 */
+	-webkit-transform:rotate(90deg); /* Safari and Chrome */
+		
+}
+
+
+img.booked{
+	list-style:none;
+	width:25px;
+	margin:-1px 4px 0 0;
+	height: 25px;
+	background:url('../images/coomon_sprite.png') 0px -46px no-repeat;
+	
+}
+
+
+
+img.booked{
+	list-style:none;
+	width:25px;
+	margin:-1px 4px 0 0;
+	height: 25px;
+	background:url('../images/coomon_sprite.png') 0px -46px no-repeat;
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg); /* IE 9 */
+	-webkit-transform:rotate(90deg); /* Safari and Chrome */
+	
+}
+
+
+
+img.bookedseats{
+	list-style:none;
+	width:25px;
+	margin:-1px 4px 0 0;
+	height: 25px;
+	background:url('../images/coomon_sprite.png') -25px -23px no-repeat;
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg); /* IE 9 */
+	-webkit-transform:rotate(90deg); /* Safari and Chrome */
+	
+	
+}
+
+img.cancelseats{
+	list-style:none;
+	width:25px;
+	margin:-1px 4px 0 0;
+	height: 25px;
+	background:url('../images/coomon_sprite.png') -25px -46px no-repeat;
+	
+}
+
+
+
