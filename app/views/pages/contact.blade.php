@@ -2,7 +2,9 @@
 
 
 @section('content')
-
+    @if(Session::has('messageSent'))
+        @include('popups.success', array('title'=>'Message sent', 'message' => Session::get('messageSent')))
+    @endif
    <div class="col-md-10 col-md-offset-1">
    <h1 style="background-color:#202d3b; color:white; text-align:center">Contact Us</h1>
    <div class="panel panel-primary">
@@ -12,29 +14,31 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-6">
+      <form method="post" action="{{URL::to('contact')}}">
         <div class="control-group {{$errors->has('Email')? 'has-error': ''}} ">
         <label class="control-label">Name {{$errors->has('Email')? 'is <span class="label label-danger">required</span>': ''}}</label>
-        <input  placeholder="Name" type="text"
-         class="form-control" name="name" value="{{Input::old('Email')}}" />
+        <input required placeholder="Name" type="text" class="form-control" name="name" value="{{Input::old('Email')}}" />
       </div>
       <div class="control-group {{$errors->has('Email')? 'has-error': ''}} ">
         <label class="control-label">Email {{$errors->has('Email')? 'is <span class="label label-danger">required</span>': ''}}</label>
-        <input  placeholder="Email" type="email"
+        <input required placeholder="Email" type="email"
          class="form-control" name="email" value="{{Input::old('Email')}}" />
       </div>
       <div class="control-group {{$errors->has('Email')? 'has-error': ''}} ">
         <label class="control-label">Subject {{$errors->has('Email')? 'is <span class="label label-danger">required</span>': ''}}</label>
-        <input  placeholder="Subject" type="text"
+        <input required placeholder="Subject" type="text"
          class="form-control" name="subject" value="{{Input::old('Email')}}" />
       </div>
       <div class="control-group {{$errors->has('Email')? 'has-error': ''}} ">
         <label class="control-label">Message {{$errors->has('Email')? 'is <span class="label label-danger">required</span>': ''}}</label>
-        <textarea  placeholder="Message" rows="4" class="form-control" name="message" value="{{Input::old('Email')}}"></textarea>
+        <textarea required placeholder="Message" rows="4" class="form-control" name="message" value="{{Input::old('Email')}}"></textarea>
       </div>
        <div class="control-group col-md-12"><br><br>
         <button class="btn btn-primary pull-right">Send</button>
       </div>
+      </form>
       </div>
+
       <div class="col-md-6">
         <h1>Main Office</h1>
         <p>2220 Aurora Blvd., Tramo,<br>

@@ -56,28 +56,16 @@
 
   <div class="col-md-4">
     @if(Session::has('notConfirmed'))
-      <div class="alert alert-danger alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          <strong>Oops!</strong> {{Session::get('notConfirmed')}}
-      </div>
+      @include('popups.error', array('title'=>'Confirmation', 'message' => Session::get('notConfirmed')))
     @endif
     @if(Session::has('message'))
-      <div class="alert alert-danger alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          <strong>Opps!</strong> {{Session::get('message')}}
-      </div>
+      @include('popups.success', array('title'=>'Confirmation', 'message' => Session::get('message')))
     @endif
     @if(Session::has('warning'))
-      <div class="alert alert-danger alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          <strong>Opps!</strong> {{Session::get('warning')}}
-      </div>
+      @include('popups.error', array('title'=>'Login error', 'message' => Session::get('warning')))
     @endif
     @if(Session::has('success'))
-      <div class="alert alert-success alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          <strong>Success!</strong> {{Session::get('success')}}
-      </div>
+      @include('popups.success', array('title'=>'Login error', 'message' => Session::get('success')))
     @endif
     @if($data)
       <div class="alert alert-success alert-dismissable">
@@ -92,12 +80,12 @@
         <form method="get" action="{{URL::to('search')}}">
           <div class="form-group ">
             <label class="control-group">From</label>
-            <select data-placeholder="Choose a Country..." tabindex="1" class="form-control" name="from">
+            <select data-placeholder="Choose a Country..." tabindex="1" class="form-control selectRoute1" name="from">
               <option value="Cubao">Cubao</option>
               <option value="Pasay">Pasay</option>
               <option value="Munoz, Nueva Ecija">Munoz, Nueva Ecija</option>
               <option value="Gapan, Nueva Ecija">Gapan, Nueva Ecija</option>
-              <option value="San Miguel, Bulacan">San Miguel, Bulacan</option>
+              <option selected value="San Miguel, Bulacan">San Miguel, Bulacan</option>
               <option value="Dagupan City">Dagupan City</option>
               <option value="Urdaneta City">Urdaneta City</option>
               <option value="Capaz, Tarlac">Capaz, Tarlac</option>
@@ -107,7 +95,7 @@
 
           <div class="form-group ">
             <label class="control-group">To</label>
-            <select data-placeholder="Choose a Country..." tabindex="1" class="form-control" name="to">
+            <select data-placeholder="Choose a Country..." tabindex="1" class="form-control selectRoute2" name="to">
               <option value="Cubao">Cubao</option>
               <option value="Pasay">Pasay</option>
               <option value="Munoz, Nueva Ecija">Munoz, Nueva Ecija</option>
@@ -125,13 +113,13 @@
             <div class="col-md-6 {{$errors->has('errorDpt')? 'has-error': '&nbsp;'}}">
               <label class="control-label">{{$errors->has('errorDpt')? '<span class="label label-danger">required</span>': ''}}</label>
               {{--*/$now1 = date("m/d/Y")/*--}}
-              {{--*/$now = date("m/d/Y", strtotime($now1 . '+ 1 day'))/*--}}
-              <input type="text" name="DepartureDate" placeholder="Departure Date" class="form-control" id="depart" value={{$now}}>
+              {{--*/$now = date("m/d/Y", strtotime($now1 . '+ 9 day'))/*--}}
+              <input readOnly type="text" name="DepartureDate" placeholder="Departure Date" class="form-control" id="depart" value={{$now}}>
             </div>
           
             <div class="col-md-6 {{$errors->has('errorReturn')? 'has-error': ''}}">
-              <label class="control-label">{{$errors->has('errorReturn')? '<span class="label label-danger">required</span>': ''}}</label>
-                <input type="text" name="ReturnDate" id="returnDate" placeholder="Return Date" class="form-control" id="return">
+              <label class="control-label">{{$errors->has('errorReturn')? '<span class="label label-danger">required</span>': ''}} </label>
+                <input required readOnly type="text" name="ReturnDate" id="returnDate" placeholder="Return Date" class="form-control" id="return" value={{$now}}>
             </div>
 
           </div>
@@ -143,14 +131,17 @@
             <label class="radio-inline">
               <input type="radio" name="busType" value="roundTrip" id="ordinary"> Ordinary
             </label>
+            <label class="radio-inline">
+              <input type="radio" name="busType" value="roundTrip" id="any" checked> Any
+            </label>
           </div>
 
           <div class="form-group">
             <label class="radio-inline">
-              <input type="radio" name="tripType" value="onewayTrip" id="onewayTrip">One way
+              <input type="radio" name="tripType" value="onewayTrip" id="onewayTrip" checked>One way
             </label>
             <label class="radio-inline">
-              <input type="radio" name="tripType" value="roundTrip" id="roundTrip" checked> Round trip
+              <input type="radio" name="tripType" value="roundTrip" id="roundTrip" > Round trip
             </label>
           </div>
           <div class="form-group">
@@ -168,7 +159,7 @@
       <div class="panel-heading">
         {{--*/date_default_timezone_set('Asia/Manila')/*--}}
         {{--*/$date = new DateTime()/*--}}
-        <h3 class="panel-title">{{date_format($date, 'l\, F j\, Y \| g:i A')}}
+        <h3 class="panel-title">{{date_format($date, 'l\, F j\, Y')}}
           <font class="pull-right">HOTLINE : 09277124349 </font>
          </h3>
         

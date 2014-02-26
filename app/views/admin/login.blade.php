@@ -12,21 +12,19 @@
                 </div>
                 
               </div>
-
-    
 @stop
 
 @section('content')
 
    <div class="col-md-4 col-md-offset-4">
     @if(Session::has('account_not_found'))
-      @include('error.error', array('title'=>'Incorrect Email', 'message' => Session::get('account_not_found')))
+      @include('popups.error', array('title'=>'Incorrect Email', 'message' => Session::get('account_not_found')))
     @endif
     @if(Session::has('wrong_password'))
-      @include('error.error', array('title'=>'Please re-enter your password', 'message' => Session::get('wrong_password')))
+      @include('popups.error', array('title'=>'Please re-enter your password', 'message' => Session::get('wrong_password')))
     @endif
     @if(Session::has('notAdmin'))
-      @include('error.error', array('title'=>'Access Denied', 'message' => Session::get('notAdmin')))
+      @include('popups.error', array('title'=>'Access Denied', 'message' => Session::get('notAdmin')))
     @endif
     <h1>Admin Login</h1>
     <div class="well">

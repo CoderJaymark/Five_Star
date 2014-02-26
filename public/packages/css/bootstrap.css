@@ -6356,7 +6356,7 @@ button.close {
 
 .modal-header {
   min-height: 16.428571429px;
-  padding: 15px;
+  padding: 8px;
   border-bottom: 1px solid #e5e5e5;
 }
 
@@ -6467,7 +6467,7 @@ button.close {
 }
 
 .tooltip.in {
-  opacity: 0.9;
+  opacity: 1;
   filter: alpha(opacity=90);
 }
 
@@ -7746,4 +7746,27 @@ input[type="color"]:focus,
   .modal-sm {
     width: 300px;
   }
+}
+
+.trips{
+background-image: -webkit-gradient(
+  linear,
+  left top,
+  left bottom,
+  color-stop(0, #202D3B),
+  color-stop(0.49, #173354),
+  color-stop(1, #202D3B)
+);
+background-image: -o-linear-gradient(bottom, #202D3B 0%, #173354 49%, #202D3B 100%);
+background-image: -moz-linear-gradient(bottom, #202D3B 0%, #173354 49%, #202D3B 100%);
+background-image: -webkit-linear-gradient(bottom, #202D3B 0%, #173354 49%, #202D3B 100%);
+background-image: -ms-linear-gradient(bottom, #202D3B 0%, #173354 49%, #202D3B 100%);
+background-image: linear-gradient(to bottom, #202D3B 0%, #173354 49%, #202D3B 100%);
+  /*outline: black solid thin;*/
+  color: rgba(255,255,255,0.5);
+  text-shadow:0 -1px 1px rgba(0,0,0,0.5);
+  cursor: hand;
+}
+.tripData {
+  color:white;
 }

@@ -19,12 +19,12 @@ class HomeController extends BaseController {
 	{
 		
 
-		if(Auth::check()){
-			return Redirect::to('reservation');
-		}
+	
 
 		return View::make('pages.index',array("title"=>"Five Star Bus  Reservation", "data"=>false));
 	}
+
+
 
 	public function postLogin(){
 			$user=array('Email'=>Input::get('email'),
@@ -39,12 +39,12 @@ class HomeController extends BaseController {
 					Auth::logout();
 					return Redirect::back()->with('notConfirmed', "Email confirmation required.");
 				} else {
-					return Redirect::intended('reservation');
+					return Redirect::intended('home');
 				}
 				
 			}
 			$isNull=User::where('Email','=',$user['Email'])->first();
-			$messages=($isNull==null) ? 'Incorrect Email' : 'Incorrect Password';
+			$messages=($isNull==null) ? 'The email you entered does not belong to any account.' : 'The password you entered is incorrect. Please try again (make sure your caps lock is off).';
 
 			return Redirect::back()->with('warning',$messages)->withInput();
 

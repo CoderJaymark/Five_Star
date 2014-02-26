@@ -34,13 +34,14 @@
       @if(!Request::is('admin/*'))
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
-          <li @if(Request::path() == '/' || Request::path() == 'reservation') class="active" @endif><a href="{{URL::to('/')}}">Home</a></li>
+          <li @if(Request::path() == '/') class="active" @endif><a href="{{URL::to('/')}}">Home</a></li>
           @if(Auth::check())
-          @if(Auth::user()->Account_type==' ')
-            <li @if(Request::path() == 'myReservation') class="active" @endif><a href="myReservation">My reservations</a></li>
-            <li @if(Request::path() == 'myCancels') class="active" @endif><a href="myCancels">My cancels</a></li>
-            <li @if(Request::path() == 'payOnline') class="active" @endif><a href="payOnline">Pay online</a></li>
-          @endif
+            @if(Auth::user()->Account_type==null)
+              <li @if(Request::path() == 'reservation') class="active" @endif><a href="reservation">Search</a></li>
+              <li @if(Request::path() == 'myReservation') class="active" @endif><a href="myReservation">My reservations</a></li>
+              <li @if(Request::path() == 'myCancels') class="active" @endif><a href="myCancels">My cancels</a></li>
+              <li @if(Request::path() == 'payOnline') class="active" @endif><a href="payOnline">Pay online</a></li>
+            @endif
           @endif 
           <li @if(Request::path() == 'farematrix') class="active" @endif><a href="farematrix">Fare matrix</a></li>
           <li @if(Request::path() == 'schedules') class="active" @endif ><a href="schedules">Schedules</a></li>
@@ -53,7 +54,6 @@
             </li>
         </ul>
         @if(Auth::check())
-        @if(Auth::user()->Account_type=='A')
           <ul class="nav navbar-nav navbar-right">
             
             <li role="presentation" class="divider"></li>
@@ -69,7 +69,6 @@
               </ul>
             </li>
           </ul>
-          @endif
         @else
           <ul class="nav navbar-nav navbar-right">
             <li @if(Request::path() == 'registration') class="active" @endif><a href="registration">Register </a></li>
@@ -112,14 +111,15 @@
       </div>     
     </div>
 
-{{HTML::script('packages/js/jquery.js')}}
-{{HTML::script('packages/js/bootstrap.js')}}
+{{HTML::script('packages/js/jquery.min.js')}}
+{{HTML::script('packages/js/bootstrap.min.js')}}
+
 {{HTML::script('packages/js/jqBootstrapValidation.js')}}
 {{HTML::script('packages/js/bootstrap-datepicker.js')}}
 {{HTML::script('packages/js/myjs.js')}}
   <script type="text/javascript">
     var nowTemp = new Date();
-    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate() +7 , 0, 0, 0, 0);
+    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate() +8 , 0, 0, 0, 0);
     
     var checkin = $('#depart').datepicker({
       onRender: function(date) {

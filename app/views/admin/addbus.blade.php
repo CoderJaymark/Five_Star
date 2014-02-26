@@ -1,77 +1,60 @@
-@extends('admin.template')
 
-@section('content')
-
-
-    @if(Session::has('messages') && Session::get('messages')==1)
- <div class="row-fluid">
-  <div class="alert alert-success">
-    <button class="close" data-dismiss="alert" type="button">&times;</button> 
-    Susccess Fully Added   
-  </div>
-  </div>
-    @endif
-
-    @if($errors->has('BusType'))
-  <div class="row-fluid">
-    <div class="alert alert-error">
-      <button class="close" data-dismiss="alert" type="button">&times;</button> 
-      {{$errors->has('BusType') ? $errors->first('BusType','<p>:message</p>') : 'Bus Type'}}   
-    </div>
-  </div>
-    @endif
-
-    @if($errors->has('BusCapacity'))
- <div class="row-fluid">
-    <div class="alert alert-error">
-      <button class="close" data-dismiss="alert" type="button">&times;</button> 
-      {{$errors->has('BusCapacity') ? $errors->first('BusCapacity','<p>:message</p>') : 'Bus Capacity'}}   
-    </div>
-  </div>
-    @endif
-
-    @if($errors->has('busplate_no'))
- <div class="row-fluid">
-    <div class="alert alert-error">
-      <button class="close" data-dismiss="alert" type="button">&times;</button> 
-      {{$errors->has('busplate_no') ? $errors->first('busplate_no','<p>:message</p>') : 'Bus Plate No'}}   
-    </div>
-  </div>
-    @endif
-{{Form::open(array('url'=>URL::to('admin/AddBus'),'class'=>'form-inline','method'=>'POST'))}}
-{{Form::token()}}
 <div class="panel panel-primary">
-<div class="panel-heading">
-        <h3 class="panel-title">Add Bus</h3>
-      </div>
-<div class="panel-body">
-  <div class="form-group col-md-8 col-md-offset-2">
-    <label class="control-label"><b>Bus Type</b></label>
-        <div class="control-group {{$errors->has('BusType')?'error':''}}">
-        <select class="select form-control" name="BusType">
-        <option value="Ordinary">Ordinary</option>
-        <option value="Aircon">Aircon</option>
-        </select> 
-        </div>
+	<div class="panel-heading">
+		<h3 class="panel-title">Add Bus</h3>
+	</div>
+	<div class="panel-body">
+		<form method="post" action="{{URL::action('AdminController@postAddBus')}}">
+			<div class="form-group">
+				<div class="row">
+					<div class="col-md-6 control-group {{$errors->has('add_busno')?'error':''}}">
+						<div class="control-label">
+							<label><b>Bus Number</b></label>
+						</div>
+						<input name="add_busno" type="text" maxlength="5" class="form-control" placeholder="Bus number" value="{{Input::old('add_busno')}}" required>
+					</div>
 
-          <div class="control-label">
-          <label><b>Bus Number</b></label>
-          </div>
-        <div class="control-group {{$errors->has('busplate_no')?'error':''}}">
-        <input name="busno" type="text" class="form-control" placeholder="Bus number">
-        </div>
-
-        <div class="control-label">
-          <label><b>Plate Number</b></label>
-          </div>
-        <div class="control-group {{$errors->has('busplate_no')?'error':''}}">
-        <input name="busplate_no" type="text" class="form-control" placeholder="Plate number">
-        </div><br><br>
-        <button  class="control-group btn btn-primary pull-right">ADD</button> 
-      </div>  
-      </div>
-      </div>
-{{Form::close()}}
-   
-
-@stop
+					<div class="col-md-6 control-group {{$errors->has('add_busplate_no')?'error':''}}">
+						<div class="control-label">
+							<label><b>Plate Number</b></label>
+						</div>
+						<input name="add_busplate_no" type="text" maxlength="7" class="form-control" placeholder="Plate number" value="{{Input::old('add_busplate_no')}}" required>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-6">
+						<label class="control-label"><b>Bus Type</b></label>
+						<div class="control-group {{$errors->has('add_bustype')?'error':''}}">
+							<select class="select form-control" name="add_bustype" id="BusType" value="{{Input::old('add_bustype')}}">
+								<option value="Ordinary">Ordinary</option>
+								<option value="Aircon">Aircon</option>
+							</select> 
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label class="control-label"><b>Seats</b></label>
+						<input name="seats" id="seats" type="text" class="form-control" value="51" readonly value="{{Input::old('seats')}}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label class="control-label"><b>Status</b></label>
+						<div class="control-group {{$errors->has('add_status')?'error':''}}">
+							<select class="select form-control" name="add_status" id="busstatus" value="{{Input::old('add_busstatus')}}">
+								<option value="Closed">Closed</option>
+								<option value="Onboard">Onboard</option>
+								<option value="Onroad">Onroad</option>
+								<option value="Waiting">Waiting</option>
+							</select> 
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label class="control-label">&nbsp;</label>
+						<input type="submit" class="form-control btn btn-primary" value="Add bus">
+					</div>
+				</div>
+			</div>
+		</form>  
+	</div>
+</div>

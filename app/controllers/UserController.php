@@ -46,7 +46,26 @@ class UserController extends BaseController {
 
     }
 
+    public function contactUs() {
+    	$name = Input::get('name');
+    	$email = Input::get('email');
+    	$subject = Input::get('subject');
+    	$message = Input::get('message');
+    	$data = array(
+	    	'name' => $name,
+	    	'email' => $email,
+	    	'subject' => $subject,
+	    	'message1' => $message
+    	);
 
+    	Mail::send('emails.message', $data, function($message) use ($email, $name, $subject){
+    		$message->from($email, $name.'<'.$email.'>');
+    		$message->to('jaymark.macaranas@gmail.com', 'Admin')
+    		->subject($subject);
+    	});
+
+    	return Redirect::back()->with('messageSent','Your message has been sent.');
+    }
 	public function showUserIndex()
 	{	
 		$data = null;
@@ -81,6 +100,10 @@ class UserController extends BaseController {
 		
 		return View::make('user.userMyReservation',array("title"=>"My Reservation","data"=>$myReservation));
 
+	}
+
+	public function showMyHome() {
+		return View::make('pages.index',array("title"=>"Five Star Bus  Reservation", "data"=>false));
 	}
 
 	

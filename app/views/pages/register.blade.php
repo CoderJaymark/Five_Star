@@ -5,10 +5,10 @@
 
    <div class="col-md-8 col-md-offset-2">
     @if(Session::has('message'))
-<div class="alert alert-success alert-dismissable">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  <strong>Opps!</strong> {{Session::get('message')}}
-</div>
+      @include('popups.error', array('title'=>'Confirmation', 'message' => Session::get('message')))
+    @endif
+     @if(Session::has('sameEmail'))
+      @include('popups.error', array('title'=>'Duplicate', 'message' => Session::get('sameEmail')))
     @endif
      @if(Session::has('warning'))
 <div class="alert alert-warning alert-dismissable">

@@ -10,14 +10,15 @@ $(document).ready(function(){
 		ordinary?$('#seats_modify').val("51"):$('#seats_modify').val("41");
 		ordinary = !ordinary;
 	});
-	$('#busid_modify').change(function(){
-		var busid = "#bus" + $('#busid_modify option:selected').text();
+	$('#modify_busid').change(function(){
+		$('#busid_to_delete').val($('#modify_busid option:selected').text());
+		var busid = "#bus" + $('#modify_busid option:selected').text();
 		var details = $(busid).val().split(",");
 		$('#busno_modify').val(details[0]);
 		$('#busplate_no_modify').val(details[1]);
 		$('#bustype_modify').val(details[2]);
 		$('#seats_modify').val(details[3]);
-		$('#busstatus_modify').val(details[4]);
+		$('#modify_busstatus').val(details[4]);
 		
 	});
 	$('#editButton').click(function(){
@@ -46,3 +47,4 @@ function addDisable() {
 	$('#seats_modify').val(details[3]);
 	$('#busstatus_modify').val(details[4]);
 }
+
