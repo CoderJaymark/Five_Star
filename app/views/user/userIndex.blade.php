@@ -35,7 +35,7 @@
         {{--*/$tip.="<tr><td>Fare</td><td>&#8369; $fare</td></tr>"/*--}}
         {{--*/$tip.="<tr><td>Bus number</td><td>$busnumber</td></tr>"/*--}}
         {{--*/$tip.="<tr><td width='110px'>Plate number</td><td>$platenumber</td></tr></table><br><small><i>Click to view seats</i></small>"/*--}}
-        <div id="{{$counter1}}" class="well trips tripData" width="100px" data-toggle="tooltip" data-placement="auto" data-html="true" title="{{$tip}}">
+        <div id="{{$priceCounter}}" class="well trips tripData" width="100px" data-toggle="tooltip" data-placement="auto" data-html="true" title="{{$tip}}">
             <table style="color: rgba(255,255,255,0.6);" >
                 <tr >
                     <td><b>From </b></td><td> {{$bus->busRoute->first()->leaving_from}} </td>
@@ -53,6 +53,8 @@
         </div>
         <table><tr><td>
        <form action="{{URL::to('reservedseats')}}">
+       <input type="hidden" name="routeid" value="{{$bus->busRoute->first()->route_id}}">
+        <input type="hidden" name="busid" value="{{$bus->busid}}">
         <div class="modal fade" id="seatModal{{$priceCounter}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

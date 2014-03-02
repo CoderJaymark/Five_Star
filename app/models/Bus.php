@@ -9,8 +9,6 @@ class Bus extends BaseModel{
 	public function seat(){
 			return $this->hasMany('Seat','busid');
 	}
-
-
 }
 
  ?>

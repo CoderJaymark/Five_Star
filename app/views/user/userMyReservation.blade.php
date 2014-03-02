@@ -36,7 +36,6 @@
       {{--*/$quantity++/*--}}
         <tr>
 
-          <td>{{$dat->bus->first()->busnumber}}  </td>
           <td>{{$dat->bus->first()->bustype}}</td>
           <td>{{$dat->bus->first()->busRoute->first()->leaving_from}}</td>
           <td>{{$dat->bus->first()->busRoute->first()->going_to}}</td>
@@ -217,25 +216,8 @@
         <input type="hidden" name="busresvid" value='{{$ticketID}}'> 
         {{--*/$quantity/*--}}
       @endforeach
-     <!--  @if(Request::path()!='myCancels')
-      <tr>
-        <td colspan="11" style="text-align:right">
-          <h3>Total : &#8369; {{$total}}</h3><br>
-                          <form method="post" action="{{URL::to('PaypalOnline')}}">
-                          {{Form::token()}}
-                         <input type="hidden" name="busresvid" value='{{$ticketID}}'> 
-                         <input type="hidden" name="total" value="{{$total}}">
-                         <input type="hidden" name="quantity" value="{{$quantity}}">
-                          <button onclick="return confirm('Are you sure you want to pay the reservation?')" name="pay" class="btn btn-info" value="true">
-                           Pay using PayPal
-                         </button>
 
-                       </form>  
-        </td>
-      </tr>
-      @endif -->
     </table>
-    {{$data->links()}}
 </div>
  
 @stop

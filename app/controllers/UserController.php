@@ -95,8 +95,8 @@ class UserController extends BaseController {
 
 	public function showMyReservation()
 	{		
-		$myReservation=BusReservations::where('user_id','=',Auth::user()->user_id)->where('status', '=', 'RESERVED')->paginate(10);
-
+		$myReservation=BusReservations::where('user_id','=',Auth::user()->user_id)->where('status', '=', "RESERVED")->groupby('busid')->get();
+		// dd($myReservation);
 		
 		return View::make('user.userMyReservation',array("title"=>"My Reservation","data"=>$myReservation));
 
@@ -114,7 +114,7 @@ class UserController extends BaseController {
 
 	public function showCancels()
 	{	
-			$myReservation=BusReservations::where('user_id','=',Auth::user()->user_id)->where('status', '=', 'CANCEL')->paginate(10);
+			$myReservation=BusReservations::where('user_id','=',Auth::user()->user_id)->where('status', '=', 'CANCEL')->get();
 
 		
 		return View::make('user.userMyReservation',array("title"=>"My Reservation","data"=>$myReservation));
@@ -358,13 +358,13 @@ class UserController extends BaseController {
 
 		public function postReserved(){
 			if(Auth::check()) {
-				$reservedSeats=Session::get('seats');
-			$reserved=array('busid'=>Session::get('busid'),
+				$reservedSeats=Input::get('seats');
+				$reserved=array('busid'=>Input::get('busid'),
 				'seatno'=>null,
 				'ticketno'=>null,
 				'user_id'=>Auth::user()->user_id,
 				'status'=>'RESERVED',
-				'route_id'=>Session::get('routeid'),
+				'route_id'=>Input::get('routeid'),
 				);
 			foreach ($reservedSeats as $key) {
 				$temp=explode('-',$key);
