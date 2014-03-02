@@ -10,7 +10,13 @@
     </div>
     @endif
 </div>
-
+@if(sizeof($data)==0)
+  <div class="col-md-8 col-md-offset-2">
+  <div class="well">
+    <p><h1><center>You have no reservations</center></h1></p>
+  </div>
+  </div>
+@else
     <table style="background-color:white" class="table table-bordered table-hover table-condensed">
       <thead>
       <tr style="background-color:#202d3b; color:white">
@@ -204,6 +210,7 @@
       @endforeach
     </table>
     {{$data->links()}}
+  @endif
 </div>
  
 @stop

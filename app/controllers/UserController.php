@@ -334,26 +334,23 @@ class UserController extends BaseController {
 	//
 	    public function postCancelReservation(){
 
-	    	if(Input::get('cancel')=='true'){
-	    		BusReservations::where('bus_resvid','=',Input::get('busresvid'))
-	    		->update(array('status'=>'CANCEL'));
-	    		$seat=BusReservations::find(Input::get('busresvid'));
-	    		$bus=Bus::find($seat->busid);
+	    		
+	    		$seats=BusReservations::where('user_id','=',Auth::user()->user_id)->where('busid', '=', Input::get('busid'))
+	    		->where('status', '=', 'RESERVED')->get();
+	    		foreach ($seats as $seat) {
+	    			$bus=Bus::find($seat->busid);
 	    		Bus::where('busid','=',$bus->busid)
 	    		->update(array('availableseats'=>$bus->availableseats+1));
-	    		$Ticketid=BusReservations::where('bus_resvid','=',Input::get('busresvid'))
-	    		->first();
-	    		Ticket::where('ticketno','=',$Ticketid->ticketno)
-	    		->update(array('status'=>'CANCEL'
 	    		
-	    			));
-	    	    return Redirect::back()->with('cancel','The Reservation was cancelled');
+	    		Ticket::where('ticketno','=',$seat->ticketno)
+	    		->update(array('status'=>'FREE', 'route_id' => '0', 'date'=> '0000-00-00', 'amount' => '0.00'));
+	    		}
+	    		BusReservations::where('user_id','=',Auth::user()->user_id)->where('busid', '=', Input::get('busid'))
+	    		->update(array('status'=>'CANCEL'));
+	    		
+	    	    return Redirect::to('myReservation')->with('cancel','The Reservation was cancelled');
 
-	    	}
-	    	else{
-	    		return Redirect::back();
-
-	    	}
+	    	
 	    }
 
 		public function postReserved(){

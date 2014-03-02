@@ -10,78 +10,83 @@
     </div>
     @endif
 </div>
+@if(sizeof($data)==0)
+  <div class="col-md-8 col-md-offset-2">
+  <div class="well">
+  <p><h1><center>
+    @if(Request::path() == "myCancels")
+    You have no cancels.
+    @else
+    You have no reservations.
+    @endif
+    </center></h1></p>
+  </div>
+  </div>
+@else
 
-    <table style="background-color:white" class="table table-bordered table-hover table-condensed">
-      <thead>
-      <tr style="background-color:#202d3b; color:white">
-        <th>Bus number</th>
-        <th>Bus type</th>
-        <th>From</th>
-        <th>To</th>
-        <th>Departure</th>
-        <th>ETD</th>
-        <th>ETA</th>
-        <th>Price</th>
-        <th>Date of Reservation</th>
-        
-        <th colspan="2" style="text-align:center">Actions</th>
-      </tr> 
-      </thead>
-      {{--*/$total = 0/*--}}
-       {{--*/$quantity = 0/*--}}
-       @if(sizeof($data)==0)
-        <tr><td colspan="10" style="text-align:center"><h1>You have no cancels</h1></td></tr>
-       @endif
-      @foreach($data as $dat)
-      {{--*/$quantity++/*--}}
-        <tr>
-
-          <td>{{$dat->bus->first()->bustype}}</td>
-          <td>{{$dat->bus->first()->busRoute->first()->leaving_from}}</td>
-          <td>{{$dat->bus->first()->busRoute->first()->going_to}}</td>
-          <td>{{$dat->bus->first()->busRoute->first()->departure_date}}</td>
-          <td>{{date('h:i A', strtotime($dat->bus->first()->busRoute->first()->departure_time))}}</td>
-                    
-          {{--*/$addTime = round($dat->bus->first()->busRoute->first()->distance / 50)/*--}}
-          {{--*/$time = date('h:i A', strtotime($dat->bus->first()->busRoute->first()->departure_time) + $addTime*60*60) /*--}}
-          <td>{{$time}}</td>
-          <td>&#8369; {{$dat->bus->first()->busRoute->first()->amount}}</td>
-          {{--*/$total += $dat->bus->first()->busRoute->first()->amount/*--}}
-          <td>{{$dat->created_at}}</td>
-          <td>
-
-            <a data-toggle="modal" href="#myModal{{$dat->busid}}">
-              View seats 
-              
-            </a>
-
-            <div class="modal fade" id="myModal{{$dat->busid}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
+    <div class="col-md-8 col-md-offset-2 row">
+    {{--*/$counter1=0/*--}}
+    {{--*/$priceCounter=0/*--}}
+    @foreach($data as $bus)
+    {{--*/$dir = $counter1%2==0?'left':'right'/*--}}
+    {{--*/$counter1++/*--}}
+    <div class="col-xs-6 col-md-6">
+        {{--*/$distance = $bus->bus->first()->busRoute->first()->distance/*--}}
+        {{--*/$fare = $bus->bus->first()->busRoute->first()->amount/*--}}
+        {{--*/$type = $bus->bus->first()->bustype/*--}}
+        {{--*/$avail = $bus->bus->first()->availableseats/*--}}
+        {{--*/$busnumber = $bus->bus->first()->busnumber/*--}}
+        {{--*/$platenumber = $bus->bus->first()->busplate_no/*--}}
+        {{--*/$tip =  "<table style='background-color:black;color:white'><tr><td>Type </td><td>$type</td></tr>"/*--}}
+        {{--*/$tip.="<tr><td>Distance</td><td>$distance KM</td></tr>"/*--}}
+        {{--*/$tip.="<tr><td>Seats</td><td>$avail</td></tr>"/*--}}
+        {{--*/$tip.="<tr><td>Fare</td><td>&#8369; $fare</td></tr>"/*--}}
+        {{--*/$tip.="<tr><td>Bus number</td><td>$busnumber</td></tr>"/*--}}
+        {{--*/$tip.="<tr><td width='110px'>Plate number</td><td>$platenumber</td></tr></table><br><small><i>Click to view seats</i></small>"/*--}}
+        <div id="{{$priceCounter}}" class="well trips tripData" width="100px" data-toggle="tooltip" data-placement="auto" data-html="true" title="{{$tip}}">
+            <table style="color: rgba(255,255,255,0.6);" >
+                <tr >
+                    <td><b>From </b></td><td> {{$bus->bus->first()->busRoute->first()->leaving_from}} </td>
+                </tr>
+                <tr>
+                    <td><b>To </b></td><td> {{$bus->bus->first()->busRoute->first()->going_to}} </td>
+                </tr>
+                <tr>
+                    <td><b>Departure </b></td><td> {{date('F j, Y', strtotime($bus->bus->first()->busRoute->first()->departure_date))}} </td>
+                </tr>
+                <tr>
+                    <td><b>Time </b></td><td> {{date('h:i A', strtotime($bus->bus->first()->busRoute->first()->departure_time))}} </td>
+                </tr>
+            </table>
+        </div>
+        <table><tr><td>
+       <input type="hidden" name="routeid" value="{{$bus->bus->first()->busRoute->first()->route_id}}">
+        <input type="hidden" name="busid" value="{{$bus->bus->first()->busid}}">
+        <div class="modal fade" id="seatModal{{$priceCounter}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">{{BusRoute::where('route_id','=',$dat->route_id)->first()->leaving_from}} - {{BusRoute::where('route_id','=',$dat->route_id)->first()->going_to}}</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="row">
-                      {{--*/$counter=0/*--}}  
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h5 class="modal-title" id="myModalLabel">{{$bus->bus->first()->busRoute->first()->leaving_from}} -  {{$bus->bus->first()->busRoute->first()->going_to}}</h5>
+                    </div>
+                <div class="modal-body">
+                 {{--*/$counter=0/*--}}  
                       {{--*/$counter1=0/*--}}  
                       {{--*/$checked_seat=null/*--}} 
                       {{--*/$isBackedSeat=0/*--}} 
-                      {{--*/$var=Bus::find($dat->busid)/*--}}  
+                      {{--*/$var=Bus::find($bus->busid)/*--}}  
                       {{--*/$varStat=null/*--}} 
                       {{--*/$ticketID=null/*--}}   
                       {{--*/$userid = Auth::user()->user_id/*--}}
                       {{--*/$reservs = BusReservations::where('user_id', '=', $userid)->first()/*--}}
-                     
-                      <table class="col-md-offset-3">
 
+                      <table class="col-md-offset-3">
                         <tr style="outline: thin solid black;"><td  align="center" colspan="6">FRONT</td></tr>  
                         <tr><td colspan="6">&nbsp;</td></tr> 
                
                   <!-- for viewing seats -->
-                        @foreach($var->seat as $seats) <!--Bus reservation-->
 
+                        @foreach($var->seat as $seats) <!--Bus reservation-->
                           @if($var->bustype=="Ordinary")
                             @if($counter == 0)
                               <tr>
@@ -114,9 +119,9 @@
                                   <img class="available"/>
 
                                 @elseif($checked_seat->status=='RESERVED' && $uid->user_id==$userid && $uid->busid == $checked_seat->busid)
-                                  {{--*/$varStat=$dat->status/*--}}  
+                                  {{--*/$varStat=$bus->status/*--}}  
 
-                                  {{--*/$ticketID=$dat->bus_resvid/*--}} 
+                                  {{--*/$ticketID=$bus->bus_resvid/*--}} 
                                   <img class="selected"/>
                                 @else
                                   e
@@ -130,17 +135,17 @@
                             @if($counter == 0)
                               <tr>
                             @endif
-                            @if($counter == 6)
+                            @if($counter == 5)
                               </tr>
                             @endif
                             {{--*/$varStat=$seats->status/*--}}  
 
                 
-                            @if($counter==2 && $isBackedSeat!=37) 
+                            @if($counter==2 && $isBackedSeat!=38) 
                               <td>&nbsp;</td>
                             @endif
                            
-                            @if($counter==5 && $isBackedSeat!=40)
+                            @if($counter==4 && $isBackedSeat!=40)
                               </tr>
                               {{--*/$counter=0/*--}}
                             @endif
@@ -158,9 +163,9 @@
                                   <img class="available"/>
 
                                 @elseif($checked_seat->status=='RESERVED' && $uid->user_id==$userid && $uid->busid == $checked_seat->busid)
-                                  {{--*/$varStat=$dat->status/*--}}  
+                                  {{--*/$varStat=$bus->status/*--}}  
 
-                                  {{--*/$ticketID=$dat->bus_resvid/*--}} 
+                                  {{--*/$ticketID=$bus->bus_resvid/*--}} 
                                   <img class="selected"/>
                                 @else
                                   e
@@ -177,47 +182,44 @@
                         <tr><td colspan="6">&nbsp;</td></tr> 
                         <tr style="outline: thin solid black; margin-top:20px"><td align="center" colspan="6">BACK</td></tr>                     
                       </table>
-                  <!--// for viewing seats -->
-              
-                    </div>
-                    <div class="modal-footer">
-                    <div class="row container" >                         
+                </div> <!-- modal-body -->
+               
+                     <div class="modal-footer" style="background-color:white">
+                       <div class="row">                         
                         <div class="pull-left">
                             <label class="control-label">
                              <img class="available"/><span class="label label-success">Free</span>
                            </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="control-label">
-                             <img class="selected"/><span class="label label-success">Your seat/s</span>
+                             <img class="booked"/><span class="label label-success">Reserved</span>
                            </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       
+                            <label class="control-label">
+                             <img class="bookedseats"/><span class="label label-success">Paid</span>
+                           </label>
                         </div>
-                        
+
                        </div>
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                  </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-              </div><!-- /.modal -->
-            </div>
-          </td>
-          @if(Request::path()!='myCancels')
-               <td>
-                        <form method="post" action="{{URL::to('CancelReservation')}}">
+         <form method="post" name="cancelForm" action="{{URL::to('CancelReservation')}}">
                           {{Form::token()}}
                          <input type="hidden" name="busresvid" value='{{$ticketID}}'> 
-                          <a onclick="return confirm('Are you sure you want to cancel the reservation?')" name="cancel" value="true">
-                           Cancel reservation
-                         </a>
-
-                       </form>  
-                </td>
-            @endif
-        </tr>
-        <input type="hidden" name="busresvid" value='{{$ticketID}}'> 
-        {{--*/$quantity/*--}}
-      @endforeach
-
-    </table>
+                         <input type="hidden" name="busid" value="{{$var->busid}}">
+        <button type="submit" onclick="cancelFrom.form.submit()" class="btn btn-default cancel" id="cancel{{$priceCounter}}">Cancel reservation</button>
+        </form>
+        <button onclick="return confirm(Are you sure about your reservation?)" class="btn btn-primary">Pay using PayPal</button>
+<br>
+        <a href=""  data-dismiss="modal">Close</a>
+      </div> <!-- modal-footer -->
+      </div>
+            </div> <!-- modal-dialog -->
+        </div> <!-- modal -->
+        
+        </td></tr></table>
+    </div> <!-- col-xs-6 col-md-6 -->
+    <input type="hidden" id="hiddenPrice{{$priceCounter}}" value="{{$bus->bus->first()->busRoute->first()->amount}}">
+    {{--*/$priceCounter++/*--}}
+    @endforeach
+</div>  <!-- row -->
+    @endif
 </div>
  
 @stop
