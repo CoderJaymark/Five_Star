@@ -38,9 +38,17 @@
           @if(Auth::check())
             @if(Auth::user()->Account_type==null)
               <li @if(Request::path() == 'reservation') class="active" @endif><a href="reservation">Search</a></li>
-              <li @if(Request::path() == 'myReservation') class="active" @endif><a href="myReservation">My reservations</a></li>
-              <li @if(Request::path() == 'myCancels') class="active" @endif><a href="myCancels">My cancels</a></li>
-              <li @if(Request::path() == 'payOnline') class="active" @endif><a href="payOnline">Pay online</a></li>
+              <li >
+                <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                Reservation
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                  <li @if(Request::path() == 'myReservation') class="active" @endif><a href="myReservation">My reservations</a></li>
+                  <li @if(Request::path() == 'myCancels') class="active" @endif><a href="myCancels">My cancels</a></li>
+                  <li @if(Request::path() == 'payOnline') class="active" @endif><a href="payOnline">Pay online</a></li>
+                </ul>
+              </li>
             @endif
           @endif 
           <li @if(Request::path() == 'farematrix') class="active" @endif><a href="farematrix">Fare matrix</a></li>
@@ -119,7 +127,7 @@
 {{HTML::script('packages/js/myjs.js')}}
   <script type="text/javascript">
     var nowTemp = new Date();
-    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate() +8 , 0, 0, 0, 0);
+    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate() +9 , 0, 0, 0, 0);
     
     var checkin = $('#depart').datepicker({
       onRender: function(date) {
@@ -143,32 +151,6 @@
       checkout.hide();
     }).data('datepicker');
   </script>
-  <script type="text/javascript">
-  var total = 0;
-  var id = 0;
-    $('.prices').click(function(event){
-      var idString = $(event.target).attr("class");
-
-      id = idString.replace( /^\D+/g, '');
-      var price = $('#hiddenPrice'+id).val();
-      if(this.checked)
-        total += parseInt(price);
-      else
-        total -= parseInt(price);
-      // alert(id +" " +price+" " +total);
-     var l = "price"+id;
-      $("label[for="+l).text("Price: ₱ "+ total);
-
-    });
-    $('.terms').click(function(event){
-      if(this.checked) {
-        $('#agree'+id).attr('disabled', false);
-      } else {
-        $('#agree'+id).attr('disabled', true);
-      }
-
-    });
-  </script>
 
   <!-- ///////////////////////////////////////////////////////////////////// -->
   <script>
@@ -179,7 +161,6 @@
     });
     var from = $('.selectRoute1 option:selected').text();
     $('.selectRoute2 option[value*="'+from+'"]').prop('disabled', true);
-   // alert(id);
 
   });
 
@@ -189,7 +170,6 @@
     });
     var to = $('.selectRoute2 option:selected').text();
     $('.selectRoute1 option[value*="'+to+'"]').prop('disabled', true);
-   // alert(id);
 
   });
   </script>

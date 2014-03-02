@@ -28,6 +28,7 @@ Route::post('login',array("uses"=>"HomeController@postLogin"));
 Route::post('register', array("uses"=>"RegistrationController@postRegistration"));
 
 Route::get('logout',array("uses"=>"HomeController@showLogout"));
+Route::get('filter',array("uses"=>"HomeController@showFilter"));
 Route::get('reservation',array("uses"=>"UserController@showUserIndex"));
 Route::get('search',array("uses"=>"UserController@showSearch"));
 Route::get('searchLocation',array("uses"=>"UserController@showSearchLocation"));

@@ -51,16 +51,17 @@
                 </tr>
             </table>
         </div>
-    </div>    
-        <div class="modal fade" id="seatModal{{$counter1}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <table><tr><td>
+       <form action="{{URL::to('reservedseats')}}">
+        <div class="modal fade" id="seatModal{{$priceCounter}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="myModalLabel">{{$bus->busRoute->first()->leaving_from}} -  {{$bus->busRoute->first()->going_to}}</h5>
                     </div>
-                </div>
-                <div style="background-color:white" class="modal-body">
+                
+                <div class="modal-body" style="background-color:white">
                     {{--*/$counter=0/*--}}  
                     {{--*/$checked_seat=null/*--}} 
                     {{--*/$isBackedSeat=0/*--}}        
@@ -151,35 +152,37 @@
                         <tr><td colspan="6">&nbsp;</td></tr> 
                         <tr style="outline: thin solid black; margin-top:20px"><td align="center" colspan="6">BACK</td></tr>                     
                     </table>
-                </div>
+                </div> <!-- modal-body -->
                
-                <div  style="background-color:white" class="modal-footer">
-                    <div class="row container">
-                        <div class="pull-left">
-                            <p><label class="control-label" for="term{{$priceCounter}}"><input id="term{{$priceCounter}}" class="terms terms{{$priceCounter}}" type="checkbox">I agree to the <a href="terms">terms and conditions.</a></label></p>
-                        </div>
-                    </div>
-                    <div class="row container" >                         
+                     <div class="modal-footer" style="background-color:white">
+                       <div class="row">                         
                         <div class="pull-left">
                             <label class="control-label">
-                                <img class="available"/><span class="label label-success">Free</span>
-                            </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <img class="available"/><span class="label label-success">Free</span>
+                           </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="control-label">
-                                <img class="booked"/><span class="label label-success">Reserved</span>
-                            </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <img class="booked"/><span class="label label-success">Reserved</span>
+                           </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="control-label">
-                                <img class="bookedseats"/><span class="label label-success">Paid</span>
-                            </label>
+                             <img class="bookedseats"/><span class="label label-success">Paid</span>
+                           </label>
                         </div>
-                    </div>
 
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button onclick="return confirm('Are you sure about your reservation?')" id="agree{{$priceCounter}}" disabled class="btn btn-info" value="true">Reserve</button>
-                </div>
-            </div>
-        </div>
+                       </div>
+         
+        <button type="button" class="btn btn-default cancel" data-dismiss="modal" id="cancel{{$priceCounter}}">Cancel</button>
+        <button onclick="return confirm(Are you sure about your reservation?)" class="btn btn-primary">Reserve</button>
+      </div> <!-- modal-footer -->
+      </div>
+            </div> <!-- modal-dialog -->
+        </div> <!-- modal -->
+        </form>
+        </td></tr></table>
+    </div> <!-- col-xs-6 col-md-6 -->
+    <input type="hidden" id="hiddenPrice{{$priceCounter}}" value="{{$bus->busRoute->first()->amount}}">
+    {{--*/$priceCounter++/*--}}
     @endforeach
-</div>  
+</div>  <!-- row -->
 @endif
 </div>
 @stop

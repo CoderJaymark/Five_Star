@@ -122,25 +122,24 @@ class UserController extends BaseController {
 	}
 
 
-	public function showSearch()
-	{	$buses=Bus::where('status','=','WAITING')->get();
+	public function showSearch() {
+		$bType = Input::get('busType');
+		if($bType == "aircon")
+			$buses=Bus::where('status','=','WAITING')->where('bustype','=','Aircon')->get();
+		elseif($bType == "ordinary")
+			$buses=Bus::where('status','=','WAITING')->where('bustype','=','Ordinary')->get();
+		else
+			$buses=Bus::where('status','=','WAITING')->get();
 		$to=Input::get('to');
 		$from = Input::get('from');
 		$return = date("Y-m-d", strtotime(Input::get('ReturnDate')));
 		$depart = date("Y-m-d", strtotime(Input::get('DepartureDate')));
 		$type = Input::get('tripType');
 
-		// $dates = array('returnDate'=>Input::get('ReturnDate'), 'departureDate'=>Input::get('DepartureDate'));
-		// $rules = array('errorReturn'=>'required', 'errorDpt'=>'required');
-		// $validation = Validator::make($dates, $rules);
-		// if($validation->fails()) {
-		// 	return Redirect::back()->withErrors($validation)->withInput();
-		// }
 		$counter=0;
 	    $containe;
 	    $bus_container=null;
 		$busroute = BusRoute::where('leaving_from', '=', $from)->get();
-		
 		
 		if($type=='onewayTrip') {
 			foreach($buses as $bus) {
@@ -183,11 +182,14 @@ class UserController extends BaseController {
 			}
 		}
 
-
-		if(Auth::check()){
-			return View::make('user.userIndex',array("title"=>"Results","data"=>$bus_container,"date"=>"true","location"=>"false"));
+		if($bus_container!=null) {
+			if(Auth::check()){
+				return View::make('user.userIndex',array("title"=>"Results","data"=>$bus_container,"date"=>"true","location"=>"false"));
+			} else {
+				return View::make('pages.results',array( "title"=>"Results","data"=>$bus_container,"date"=>"true","location"=>"false"));
+			}
 		} else {
-			return View::make('pages.results',array( "title"=>"Results","data"=>$bus_container,"date"=>"true","location"=>"false"));
+			return Redirect::back()->with('noBus','No results found. ');
 		}
 	}
 

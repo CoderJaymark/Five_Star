@@ -69,41 +69,64 @@ class HomeController extends BaseController {
 		$bus=Bus::where('status','=','WAITING')->get();
 		$route = BusRoute::all();
 		$counter = 0;
-		// foreach ($route as $r) {
-		// 	$b = Bus::find($r->busid)->where('status', '=', 'WAITING')->get();
-		// 	foreach($b as $bs) {
-		// 		$b->route = $bs;
-		// 		$data[$counter++] = $b;
-		// 	}
-			
-		// }
-		
-		// foreach($bus as $b) {
-		// 	$routessss = BusRoute::find(where('busid', '>', '0')->get();
-		// 	foreach($routessss as $rs) {
-		// 		$b->route = $rs;
-				
-		// 	}
-		// 	// $b->route = $routessss;
-		// 	$data[$counter++] = $b;
-		// 	//$data->
-		// }
+
 		foreach($bus as $b) {
 			$r = BusRoute::find($b->busid);
 			$b->route = $r;
 			$data[$counter++] = $b;
 		}
-		// foreach($route as $r) {
-		// 	// $b = Bus::find($r->busid);
-		// 	// $b = Bus::where('busid', '=', $r->busid);
-		// 	$b->route = $r;
-		// 	$data[$counter++] = $b;
-		// }
+
 		return View::make('pages.schedules',array("title"=>"Five Star Bus Reservation","data"=>$data));
 	}
 	public function showLocation()
 	{
 
+	}
+
+	public function showFilter() {
+		$filter = Input::get('filter');
+		$counter=0;
+	    $containe;
+	    $bus_container=null;
+		$buses = Bus::where('status', '=', 'WAITING')->get();
+		if($filter == "1") {
+			$depart = date("Y-m-d", strtotime(Input::get('filter_departure_date')));
+			
+	    	$busroute = BusRoute::where('departure_date', '=', $depart)->get();
+	    	foreach($buses as $bus) {
+				$container[$counter] = Bus::find($bus->busid)->busRoute()
+				->where('departure_date','=',$depart)->first();
+				if($container[$counter]==null){
+					unset($container[$counter]);
+				}	
+				$counter++;	
+			}
+			$counter = 0;
+			foreach ($container as $key=>$value) {
+				$bus_container[$counter++]=Bus::find($value->busid);
+			}
+			return View::make('pages.results',array( "title"=>"Results","data"=>$bus_container,"date"=>"true","location"=>"false"));
+		} elseif ($filter == "2") {
+			$destination = Input::get('filter_from');
+	    	$busroute = BusRoute::where('going_to', '=', $destination)->get();
+	    	foreach($buses as $bus) {
+				$container[$counter] = Bus::find($bus->busid)->busRoute()
+				->where('going_to','=',$destination)->first();
+				if($container[$counter]==null){
+					unset($container[$counter]);
+				}	
+				$counter++;	
+			}
+			$counter = 0;
+			foreach ($container as $key=>$value) {
+				$bus_container[$counter++]=Bus::find($value->busid);
+			}
+			return View::make('pages.results',array( "title"=>"Results","data"=>$bus_container,"date"=>"true","location"=>"false"));
+		} elseif ($filter == "Origin") {
+
+		} else {
+			return Redirect::to('/')->with('noBus', $filter);
+		}
 	}
 
 

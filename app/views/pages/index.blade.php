@@ -67,6 +67,9 @@
     @if(Session::has('success'))
       @include('popups.success', array('title'=>'Login error', 'message' => Session::get('success')))
     @endif
+    @if(Session::has('noBus'))
+      @include('popups.error', array('title'=>'Oops', 'message' => Session::get('noBus')))
+    @endif
     @if($data)
       <div class="alert alert-success alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -79,13 +82,13 @@
 
         <form method="get" action="{{URL::to('search')}}">
           <div class="form-group ">
-            <label class="control-group">From</label>
+            <label class="control-group">From <i>(Origin)</i></label>
             <select data-placeholder="Choose a Country..." tabindex="1" class="form-control selectRoute1" name="from">
-              <option value="Cubao">Cubao</option>
+              <option disabled value="Cubao">Cubao</option>
               <option value="Pasay">Pasay</option>
-              <option value="Munoz, Nueva Ecija">Munoz, Nueva Ecija</option>
+              <option selected value="Munoz, Nueva Ecija">Munoz, Nueva Ecija</option>
               <option value="Gapan, Nueva Ecija">Gapan, Nueva Ecija</option>
-              <option selected value="San Miguel, Bulacan">San Miguel, Bulacan</option>
+              <option value="San Miguel, Bulacan">San Miguel, Bulacan</option>
               <option value="Dagupan City">Dagupan City</option>
               <option value="Urdaneta City">Urdaneta City</option>
               <option value="Capaz, Tarlac">Capaz, Tarlac</option>
@@ -94,11 +97,11 @@
           </div>
 
           <div class="form-group ">
-            <label class="control-group">To</label>
+            <label class="control-group">To <i>(Destination)</i></label>
             <select data-placeholder="Choose a Country..." tabindex="1" class="form-control selectRoute2" name="to">
-              <option value="Cubao">Cubao</option>
+              <option selected value="Cubao">Cubao</option>
               <option value="Pasay">Pasay</option>
-              <option value="Munoz, Nueva Ecija">Munoz, Nueva Ecija</option>
+              <option disabled value="Munoz, Nueva Ecija">Munoz, Nueva Ecija</option>
               <option value="Gapan, Nueva Ecija">Gapan, Nueva Ecija</option>
               <option value="San Miguel, Bulacan">San Miguel, Bulacan</option>
               <option value="Dagupan City">Dagupan City</option>
@@ -110,31 +113,21 @@
 
 
           <div class="row form-group">
-            <div class="col-md-6 {{$errors->has('errorDpt')? 'has-error': '&nbsp;'}}">
-              <label class="control-label">{{$errors->has('errorDpt')? '<span class="label label-danger">required</span>': ''}}</label>
+            <div class="col-md-6">
+              <label class="control-label">Departure</label>
               {{--*/$now1 = date("m/d/Y")/*--}}
               {{--*/$now = date("m/d/Y", strtotime($now1 . '+ 9 day'))/*--}}
               <input readOnly type="text" name="DepartureDate" placeholder="Departure Date" class="form-control" id="depart" value={{$now}}>
             </div>
           
-            <div class="col-md-6 {{$errors->has('errorReturn')? 'has-error': ''}}">
-              <label class="control-label">{{$errors->has('errorReturn')? '<span class="label label-danger">required</span>': ''}} </label>
+            <div class="col-md-6">
+              <label class="control-label" id="returnLabel">Return</label>
                 <input required readOnly type="text" name="ReturnDate" id="returnDate" placeholder="Return Date" class="form-control" id="return" value={{$now}}>
             </div>
 
           </div>
 
-          <div class="form-group">
-            <label class="radio-inline">
-              <input type="radio" name="busType" value="onewayTrip" id="aircon"> Aircon
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="busType" value="roundTrip" id="ordinary"> Ordinary
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="busType" value="roundTrip" id="any" checked> Any
-            </label>
-          </div>
+          
 
           <div class="form-group">
             <label class="radio-inline">
@@ -142,6 +135,18 @@
             </label>
             <label class="radio-inline">
               <input type="radio" name="tripType" value="roundTrip" id="roundTrip" > Round trip
+            </label>
+          </div>
+          <div class="form-group">
+          <label class="control-label">Bus type</label><br>
+            <label class="radio-inline">
+              <input type="radio" name="busType" value="aircon" id="aircon"> Aircon
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="busType" value="ordinary" id="ordinary"> Ordinary
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="busType" value="any" id="any" checked> Any
             </label>
           </div>
           <div class="form-group">
