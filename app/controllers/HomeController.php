@@ -39,7 +39,7 @@ class HomeController extends BaseController {
 					Auth::logout();
 					return Redirect::back()->with('notConfirmed', "Email confirmation required.");
 				} else {
-					return Redirect::intended('home');
+					return Redirect::intended('terms');
 				}
 				
 			}

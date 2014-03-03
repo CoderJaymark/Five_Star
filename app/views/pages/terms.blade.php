@@ -37,7 +37,7 @@
     {{Session::flash("routeid",Input::get('routeid1'));}}
     {{Session::flash("busid", Input::get('busid1'));}}
 
-      <p><br><a href="{{URL::to('reservedseats')}}">I understand the terms and conditions and wished to proceed</a></p>
+      <p><br><a href="{{URL::to('/')}}">I understand the terms and conditions and wished to proceed</a></p>
     @endif
    </div>
  </div>

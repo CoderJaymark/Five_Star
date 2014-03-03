@@ -36,7 +36,7 @@
         <ul class="nav navbar-nav">
           <li @if(Request::path() == '/') class="active" @endif><a href="{{URL::to('/')}}">Home</a></li>
           @if(Auth::check())
-            @if(Auth::user()->Account_type==null)
+            @if(Auth::user()->Account_type=="C")
               <li @if(Request::path() == 'reservation') class="active" @endif><a href="reservation">Search</a></li>
               <li >
                 <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">

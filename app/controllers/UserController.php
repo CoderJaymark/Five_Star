@@ -343,7 +343,7 @@ class UserController extends BaseController {
 	    		->update(array('availableseats'=>$bus->availableseats+1));
 	    		
 	    		Ticket::where('ticketno','=',$seat->ticketno)
-	    		->update(array('status'=>'FREE', 'route_id' => '0', 'date'=> '0000-00-00', 'amount' => '0.00'));
+	    		->update(array('status'=>'FREE', 'route_id' => '0', 'date'=> '0000-00-00', 'amount' => '0.00', 'bus_resvid' => '0'));
 	    		}
 	    		BusReservations::where('user_id','=',Auth::user()->user_id)->where('busid', '=', Input::get('busid'))
 	    		->update(array('status'=>'CANCEL'));

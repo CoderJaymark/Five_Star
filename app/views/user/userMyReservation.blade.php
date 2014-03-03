@@ -34,13 +34,13 @@
         {{--*/$distance = $bus->bus->first()->busRoute->first()->distance/*--}}
         {{--*/$fare = $bus->bus->first()->busRoute->first()->amount/*--}}
         {{--*/$type = $bus->bus->first()->bustype/*--}}
-        {{--*/$avail = $bus->bus->first()->availableseats/*--}}
         {{--*/$busnumber = $bus->bus->first()->busnumber/*--}}
         {{--*/$platenumber = $bus->bus->first()->busplate_no/*--}}
+        {{--*/$seatCount = BusReservations::where('user_id','=',Auth::user()->user_id)->where('busid', '=', $bus->bus->first()->busid)
+          ->where('status', '=', 'RESERVED')->count()/*--}}
+        {{--*/$totalFare = $fare * $seatCount/*--}}
         {{--*/$tip =  "<table style='background-color:black;color:white'><tr><td>Type </td><td>$type</td></tr>"/*--}}
         {{--*/$tip.="<tr><td>Distance</td><td>$distance KM</td></tr>"/*--}}
-        {{--*/$tip.="<tr><td>Seats</td><td>$avail</td></tr>"/*--}}
-        {{--*/$tip.="<tr><td>Fare</td><td>&#8369; $fare</td></tr>"/*--}}
         {{--*/$tip.="<tr><td>Bus number</td><td>$busnumber</td></tr>"/*--}}
         {{--*/$tip.="<tr><td width='110px'>Plate number</td><td>$platenumber</td></tr></table><br><small><i>Click to view seats</i></small>"/*--}}
         <div id="{{$priceCounter}}" class="well trips tripData" width="100px" data-toggle="tooltip" data-placement="auto" data-html="true" title="{{$tip}}">
@@ -56,6 +56,12 @@
                 </tr>
                 <tr>
                     <td><b>Time </b></td><td> {{date('h:i A', strtotime($bus->bus->first()->busRoute->first()->departure_time))}} </td>
+                </tr>
+                <tr>
+                  <td><b>Seats </b></td><td> {{$seatCount}} </td>
+                </tr>
+                <tr>
+                  <td><b>Amount </b></td><td>&#8369; {{$totalFare}} </td>
                 </tr>
             </table>
         </div>
@@ -78,7 +84,7 @@
                       {{--*/$varStat=null/*--}} 
                       {{--*/$ticketID=null/*--}}   
                       {{--*/$userid = Auth::user()->user_id/*--}}
-                      {{--*/$reservs = BusReservations::where('user_id', '=', $userid)->first()/*--}}
+                      {{--*/$reservs = BusReservations::where('user_id', '=', $userid)->where('status','=','RESERVED')->first()/*--}}
 
                       <table class="col-md-offset-3">
                         <tr style="outline: thin solid black;"><td  align="center" colspan="6">FRONT</td></tr>  
@@ -122,7 +128,11 @@
                                   {{--*/$varStat=$bus->status/*--}}  
 
                                   {{--*/$ticketID=$bus->bus_resvid/*--}} 
+                                  @if($checked_seat->busReservation->user_id == Auth::user()->user_id)
                                   <img class="selected"/>
+                                  @else
+                                    <img class="booked"/>
+                                  @endif
                                 @else
                                   e
                                 @endif
@@ -162,11 +172,14 @@
                                 @if($checked_seat->status=='FREE' || $checked_seat->status=='CANCEL')
                                   <img class="available"/>
 
-                                @elseif($checked_seat->status=='RESERVED' && $uid->user_id==$userid && $uid->busid == $checked_seat->busid)
+                                @elseif($checked_seat->status=='RESERVED')
                                   {{--*/$varStat=$bus->status/*--}}  
-
-                                  {{--*/$ticketID=$bus->bus_resvid/*--}} 
+                                  {{--*/$ticketID=$bus->bus_resvid/*--}}
+                                  @if($checked_seat->ticket->first()->busReservation->first()->user_id == Auth::user()->user_id)
                                   <img class="selected"/>
+                                  @else
+                                    <img class="booked"/>
+                                  @endif
                                 @else
                                   e
                                 @endif
@@ -189,23 +202,37 @@
                         <div class="pull-left">
                             <label class="control-label">
                              <img class="available"/><span class="label label-success">Free</span>
-                           </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           </label> &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="control-label">
                              <img class="booked"/><span class="label label-success">Reserved</span>
-                           </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           </label> &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="control-label">
                              <img class="bookedseats"/><span class="label label-success">Paid</span>
+                           </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                           <label class="control-label">
+                             <img class="selected"/><span class="label label-success">Your seat/s</span>
                            </label>
                         </div>
 
                        </div>
-         <form method="post" name="cancelForm" action="{{URL::to('CancelReservation')}}">
+                       <div class="row ">
+                       <div class="col-md-8 col-md-offset-0">
+         <form class="form-group" method="post" name="cancelForm" action="{{URL::to('CancelReservation')}}">
                           {{Form::token()}}
                          <input type="hidden" name="busresvid" value='{{$ticketID}}'> 
                          <input type="hidden" name="busid" value="{{$var->busid}}">
         <button type="submit" onclick="cancelFrom.form.submit()" class="btn btn-default cancel" id="cancel{{$priceCounter}}">Cancel reservation</button>
         </form>
+        </div>
+        <div class="col-md-4 col-md-offset-0">
+          <form class="control-group" method="post" name="cancelForm" action="{{URL::to('CancelReservation')}}">
+                          {{Form::token()}}
+                         <input type="hidden" name="busresvid" value='{{$ticketID}}'> 
+                         <input type="hidden" name="busid" value="{{$var->busid}}">
         <button onclick="return confirm(Are you sure about your reservation?)" class="btn btn-primary">Pay using PayPal</button>
+        </form>
+        </div>
+        </div>
 <br>
         <a href=""  data-dismiss="modal">Close</a>
       </div> <!-- modal-footer -->

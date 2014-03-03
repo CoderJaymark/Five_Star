@@ -12,8 +12,10 @@ class BusReservations extends BaseModel{
 	public function bus() {
 		return $this->hasMany('Bus', 'busid');
 	}
+	public function ticket() {
+		return $this->hasMany('Ticket', 'bus_resvid');
+	}
 
-	
 }
 
 

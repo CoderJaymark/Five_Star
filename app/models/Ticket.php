@@ -8,7 +8,7 @@ class Ticket extends BaseModel{
 	}
 
 	public function busReservation(){
-		return $this->hasOne('BusReservation','ticketno');
+		return $this->hasOne('BusReservations','bus_resvid', 'bus_resvid');
 	}
 	
 	
