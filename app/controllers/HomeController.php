@@ -51,8 +51,8 @@ class HomeController extends BaseController {
 
 	}
 	public function showFareMatrix() {
-		$f1 = BusRoute::where('route_id','<','13')->get()->sortBy('going_to');
-		$f2 = BusRoute::where('route_id','>','12')->where('route_id', '<', '19')->get()->sortBy('going_to');
+		$f1 = BusRoute::where('route_id','<','5')->get()->sortBy('going_to');
+		$f2 = BusRoute::where('route_id','>','4')->get()->sortBy('going_to');
 
 		return View::make('pages.farematrix', array("fare1"=>$f1, "fare2"=>$f2, "title"=>"Fare Matrix"));
 	}

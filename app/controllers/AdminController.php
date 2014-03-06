@@ -144,4 +144,51 @@ class AdminController extends BaseController {
 		return Redirect::to('admin/panel')->with('addbusSuccess', 'Successfully added!');
 	}
 	
+	public function showUsers() {
+		return View::make('admin.users', array("title"=>"Users"));
+	}
+
+	public function showBuses() {
+		return View::make('admin.buses', array("title"=>"Bus"));
+	}
+
+	public function showRoutes() {
+		return View::make('admin.routes', array("title"=>"Routes"));
+	}
+
+	public function deletebus($id) {
+		Bus::find($id)->delete();
+		return Redirect::to('admin/buses');
+	}
+
+	public function saveUser() {
+		$confirm = Input::get('confirm');
+		$type = Input::get('type');
+		$user = User::find(Input::get('id'));
+		$user->Regconfirm = $confirm;
+		$user->Account_type = $type;
+		$user->save();
+		return Redirect::to('admin/users');
+	}
+
+	public function saveBus() {
+		$status  = Input::get('status');
+		$bus = Bus::find(Input::get('id'));
+		$bus->status = $status;
+		$bus->save();
+		return Redirect::to('admin/buses');
+	}
+
+	public function saveRoute() {
+		$amount = Input::get('amount');
+		$departure = Input::get('departure');
+		$time = Input::get('time');
+		$route = BusRoute::find(Input::get('id'));
+		$route->amount = $amount;
+		$route->departure_date =  date("Y-m-d", strtotime($departure));
+		$route->departure_time = $time;
+		$route->save();
+
+		return Redirect::to('admin/routes');
+	}
 }

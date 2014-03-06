@@ -55,6 +55,9 @@
   </div>
 
   <div class="col-md-4">
+  @if(Session::has('ticket_no'))
+      @include('popups.success', array('title'=>'Confirmation', 'message' => "Paid!"))
+    @endif
     @if(Session::has('notConfirmed'))
       @include('popups.error', array('title'=>'Confirmation', 'message' => Session::get('notConfirmed')))
     @endif

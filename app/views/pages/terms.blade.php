@@ -24,9 +24,11 @@
           <ul>
             <li>We accept ticket orders for advance reservations, minimum cut off is 8 business days from date of preferred trip;</li>
             <li>For reservations for trips less than eight (8) business days away, the passenger will have to purchase the ticket over the counter at a Five Star Bus terminal.</li>
+          
           </ul>
         </li>
       </ul>
+      <li>Passengers who wish to pay onsite need to pay the total amount of reservation three (3) hours before the scheduled trip.</li>
     </ol>
 
     @if(Auth::check())

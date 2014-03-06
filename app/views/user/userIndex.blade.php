@@ -53,8 +53,7 @@
         </div>
         <table><tr><td>
        <form action="{{URL::to('reservedseats')}}">
-       <input type="hidden" name="routeid" value="{{$bus->busRoute->first()->route_id}}">
-        <input type="hidden" name="busid" value="{{$bus->busid}}">
+
         <div class="modal fade" id="seatModal{{$priceCounter}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -171,7 +170,10 @@
                         </div>
 
                        </div>
-         
+        <input type="hidden" name="routeid" value="{{$bus->busRoute->first()->route_id}}">
+        <input type="hidden" name="ticketno" value="{{$seats->ticketno}}">
+        <input type="hidden" name="pay" value="true">
+        <input type="hidden" name="busid" value="{{$bus->busid}}">
         <button type="button" class="btn btn-default cancel" data-dismiss="modal" id="cancel{{$priceCounter}}">Cancel</button>
         <button onclick="return confirm(Are you sure about your reservation?)" class="btn btn-primary">Reserve</button>
       </div> <!-- modal-footer -->

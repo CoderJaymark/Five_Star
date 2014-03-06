@@ -4,10 +4,10 @@
 <div class="col-md-12">
 <div class="row">
     @if(Session::has('cancel'))
-    <div class="alert alert-info alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-       {{Session::get('cancel')}}
-    </div>
+     @include('popups.success', array('title'=>'Success!', 'message' => Session::get('cancel')))
+    @endif
+     @if(Session::has('payerror'))
+     @include('popups.error', array('title'=>'Error!', 'message' => Session::get('payerror')))
     @endif
 </div>
 @if(sizeof($data)==0)
@@ -128,11 +128,10 @@
                                   {{--*/$varStat=$bus->status/*--}}  
 
                                   {{--*/$ticketID=$bus->bus_resvid/*--}} 
-                                  @if($checked_seat->busReservation->user_id == Auth::user()->user_id)
-                                  <img class="selected"/>
-                                  @else
+                                 
                                     <img class="booked"/>
-                                  @endif
+                                 
+
                                 @else
                                   e
                                 @endif
@@ -175,11 +174,8 @@
                                 @elseif($checked_seat->status=='RESERVED')
                                   {{--*/$varStat=$bus->status/*--}}  
                                   {{--*/$ticketID=$bus->bus_resvid/*--}}
-                                  @if($checked_seat->ticket->first()->busReservation->first()->user_id == Auth::user()->user_id)
-                                  <img class="selected"/>
-                                  @else
+                                 
                                     <img class="booked"/>
-                                  @endif
                                 @else
                                   e
                                 @endif
@@ -216,7 +212,7 @@
 
                        </div>
                        <div class="row ">
-                       <div class="col-md-8 col-md-offset-0">
+                       <div class="col-md-4 col-md-offset-0">
          <form class="form-group" method="post" name="cancelForm" action="{{URL::to('CancelReservation')}}">
                           {{Form::token()}}
                          <input type="hidden" name="busresvid" value='{{$ticketID}}'> 
@@ -225,11 +221,19 @@
         </form>
         </div>
         <div class="col-md-4 col-md-offset-0">
-          <form class="control-group" method="post" name="cancelForm" action="{{URL::to('CancelReservation')}}">
+          <form class="control-group" method="post" name="cancelForm" action="{{URL::to('PaypalOnline')}}">
                           {{Form::token()}}
                          <input type="hidden" name="busresvid" value='{{$ticketID}}'> 
                          <input type="hidden" name="busid" value="{{$var->busid}}">
-        <button onclick="return confirm(Are you sure about your reservation?)" class="btn btn-primary">Pay using PayPal</button>
+        <button type="submit" onclick="this.form.submit()" class="btn btn-primary">Pay using PayPal</button>
+        </form>
+        </div>
+        <div class="col-md-4 col-md-offset-0">
+          <form class="control-group" method="post" name="cancelForm" action="{{URL::to('PayOnsite')}}">
+                          {{Form::token()}}
+                         <input type="hidden" name="busresvid" value='{{$ticketID}}'> 
+                         <input type="hidden" name="busid" value="{{$var->busid}}">
+        <button type="submit" onclick="this.form.submit()" class="btn btn-primary">Pay on-site</button>
         </form>
         </div>
         </div>

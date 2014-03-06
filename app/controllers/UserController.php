@@ -15,8 +15,11 @@ class UserController extends BaseController {
 	|
 	*/
 	private $_apiContext;
-    private $_ClientId='AZZISBAGJBtFuDbxP5Wysb2MWDaKBw39-mJp0vfNSenb-sWLRIH3TReegmyu';
-    private $_ClientSecret='EPYFCxAwVnh-l8edNT3iWVTg7N4lrEVf1OyjsbCHGEVVewNbyb3bMKGCrNLJ';
+    // private $_ClientId='AZZISBAGJBtFuDbxP5Wysb2MWDaKBw39-mJp0vfNSenb-sWLRIH3TReegmyu'; test account sandbpx
+    // private $_ClientSecret='EPYFCxAwVnh-l8edNT3iWVTg7N4lrEVf1OyjsbCHGEVVewNbyb3bMKGCrNLJ';
+
+    private $_ClientId='AX8tnRCC5vM8UmOP8dXIyeG1A_G2zcfEekLBiIyaWSGYaWtJyIR5eV4ZEYEi';
+    private $_ClientSecret='EMtVNhDcdmRQ7dcoLllR9t7knmGV6oXbhDH9tu1agmVv0EgrK-PJKRHhqJ0m';
 
     public function __construct(){
 
@@ -37,7 +40,7 @@ class UserController extends BaseController {
         // dynamic configuration instead of using sdk_config.ini
 
         $this->_apiContext->setConfig(array(
-            'mode' => 'sandbox',
+            'mode' => 'live',
             'http.ConnectionTimeOut' => 30,
             'log.LogEnabled' => true,
             'log.FileName' => __DIR__.'/../PayPal.log',
@@ -109,7 +112,12 @@ class UserController extends BaseController {
 	
 
 	public function showPaymentSuccess(){
-		BusReservations::where('');
+		return Redirect::to('/');
+	}
+
+	public function showPaymentCancel() {
+		$myReservation=BusReservations::where('user_id','=',Auth::user()->user_id)->where('status', '=', "RESERVED")->groupby('busid')->get();
+		return Redirect::to('myReservation')->with('payerror', 'Sorry. Theres a problem');
 	}
 
 	public function showCancels()
@@ -215,15 +223,43 @@ class UserController extends BaseController {
 		}
 		
 	}
+	public function postPayOnsite() {
+		$reservation = BusReservations::where('bus_resvid', '=', Input::get('busresvid'))->first();
+		$data = array('from'=>$reservation->bus->first()->busRoute->first()->leaving_from,
+						'to'=>$reservation->bus->first()->busRoute->first()->going_to,
+						'departure'=>date('F j, Y', strtotime($reservation->bus->first()->busRoute->first()->departure_date)),
+						'time'=>date('h:i A', strtotime($reservation->bus->first()->busRoute->first()->departure_time)),
+						'name'=>Auth::user()->First_Name .' '.Auth::user()->Last_Name
+						);
+		$user = Auth::user();
+		Mail::send('pages.onsite',$data,function($message){
 
+				$message->to(Auth::user()->Email, Auth::user()->First_Name.' '.Auth::user()->Last_Name)->subject('BusReservation-Tickets');
+
+			});
+
+			return Redirect::to('myReservation')->with('onsite',"Your ticket information has been emailed to you. Please print it and pay it on site three hours before departure.");
+	}
 	public function postPayOnline(){
+		$reservation = BusReservations::where('bus_resvid', '=', Input::get('busresvid'))->first();
+		$details = array('from'=>$reservation->bus->first()->busRoute->first()->leaving_from,
+						'to'=>$reservation->bus->first()->busRoute->first()->going_to,
+						'departure'=>date('F j, Y', strtotime($reservation->bus->first()->busRoute->first()->departure_date)),
+						'time'=>date('h:i A', strtotime($reservation->bus->first()->busRoute->first()->departure_time))
+						);
+
 		$busreservationid=array('reservid'=>Input::get('busresvid'),
 			'pay'=>Input::get('pay'));
 			
-					
-
-			$data=Ticket::find(BusReservations::find($busreservationid['reservid'])->ticketno);
-			$ticket_no=Input::get('ticketno');
+				
+            $ticket=BusReservations::where('status', '=','RESERVED')->where('user_id', '=', Auth::user()->user_id)->get();
+            $total = 0;
+            foreach($ticket as $t) {
+            	$total += Ticket::find($t->ticketno)->amount;
+            }
+			// $data=Ticket::find($ticket->ticketno)->first();
+			//$ticket_no=$ticket->busid."-".$ticket->ticketno;
+			// dd($ticket_no);
 			$departure_date=Input::get('departure_date');
 
         // ### Payer
@@ -242,10 +278,10 @@ class UserController extends BaseController {
    	  
 
 		$item = Paypalpayment::Item();
-		$item->setName('Bus Reservation Ticket-'.$ticket_no);
+		$item->setName('Bus Reservation Ticket-jaymark');
 		$item->setCurrency('PHP');
 		$item->setQuantity(1);
-		$item->setPrice($data->amount);
+		$item->setPrice($total);
 
 			// ### Additional payment details
 		// Use this optional field to set additional
@@ -253,7 +289,7 @@ class UserController extends BaseController {
 		// charges etc.
 		$details = Paypalpayment::Details();
 	
-		$details->setSubtotal($data->amount);
+		$details->setSubtotal($total);
 
 		  // ### Amount
         // Let's you specify a payment amount.
@@ -261,7 +297,7 @@ class UserController extends BaseController {
 
 		$amount = Paypalpayment::Amount();
         $amount->setCurrency("PHP");
-        $amount->setTotal($data->amount);
+        $amount->setTotal($total);
         $amount->setDetails($details);
 
 		$itemList = Paypalpayment:: ItemList();
@@ -280,7 +316,7 @@ class UserController extends BaseController {
         $baseUrl = URL::to('/');
         $redirectUrls = Paypalpayment::RedirectUrls();
         $redirectUrls->setReturn_url("$baseUrl/payment/executepaymentsuccess");
-        $redirectUrls->setCancel_url("$baseUrl/executepaymentcancel");
+        $redirectUrls->setCancel_url("$baseUrl/payment/executepaymentcancel");
 
         // ### Payment
         // A Payment Resource; create one using
@@ -326,7 +362,7 @@ class UserController extends BaseController {
         // payment id in a database.
         //$_SESSION['paymentId'] = $payment->getId();
             if(isset($redirectUrl)) {
-             return Redirect::to($redirectUrl)->with(array('ticket_no'=>$ticket_no));
+             return Redirect::to($redirectUrl)->with(array('details'=>$details));
                
             }
 
@@ -387,7 +423,7 @@ class UserController extends BaseController {
 						$Bus->save();
 				}
 			}
-			return Redirect::to('payOnline');
+			return Redirect::to('myReservation');
 				
 			} else{
 			return Redirect::back()->with('notLogin', "You must be a registered user in order to reserve a seat. ");

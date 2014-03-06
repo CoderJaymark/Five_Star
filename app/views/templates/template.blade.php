@@ -38,17 +38,7 @@
           @if(Auth::check())
             @if(Auth::user()->Account_type=="C")
               <li @if(Request::path() == 'reservation') class="active" @endif><a href="reservation">Search</a></li>
-              <li >
-                <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                Reservation
-                  <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                  <li @if(Request::path() == 'myReservation') class="active" @endif><a href="myReservation">My reservations</a></li>
-                  <li @if(Request::path() == 'myCancels') class="active" @endif><a href="myCancels">My cancels</a></li>
-                  <li @if(Request::path() == 'payOnline') class="active" @endif><a href="payOnline">Pay online</a></li>
-                </ul>
-              </li>
+              <li @if(Request::path() == 'myReservation') class="active" @endif><a href="myReservation">My reservations</a></li>
             @endif
           @endif 
           <li @if(Request::path() == 'farematrix') class="active" @endif><a href="farematrix">Fare matrix</a></li>

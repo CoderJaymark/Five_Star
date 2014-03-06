@@ -1,0 +1,6 @@
+registered users
+number of reservations
+number of cancels
+number of bus left
+
+onsite payment

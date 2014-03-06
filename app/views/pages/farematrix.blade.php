@@ -68,7 +68,9 @@
           @if($f->route_id%2==1)
             <td>{{$f->going_to}}</td>
             <td>&#8369; {{$f->amount}}</td>
+            @if($counter<2)
           <td>&#8369; {{$pasay[$counter++]}}</td>
+          @endif
           @endif 
           
           

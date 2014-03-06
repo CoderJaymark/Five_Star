@@ -107,7 +107,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Liebig\Cron\CronServiceProvider',
-		'Anouar\Paypalpayment\PaypalpaymentServiceProvider'
+		'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
+		'Anouar\Fpdf\FpdfServiceProvider'
 
 
 	),
@@ -175,7 +176,9 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-	     'Paypalpayment'   => 'Anouar\Paypalpayment\Facades\PaypalPayment'
+	     'Paypalpayment'   => 'Anouar\Paypalpayment\Facades\PaypalPayment',
+	    'Fpdf'    			=> 'Anouar\Fpdf\Facades\Fpdf'
+
 
 	),
 

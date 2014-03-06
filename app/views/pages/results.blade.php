@@ -203,7 +203,7 @@
               {{--*/$checked_seat=null/*--}} 
               {{--*/$isBackedSeat=0/*--}}        
               <table class="col-md-offset-3">
-                <label class="control-label" for="price{{$priceCounter}}">Price:  &#8369; 0</label>
+              <label>You can't reserve now. Please <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login</a> or <a href="{{URL::to('registration')}}" >Register</a> first.</label>
                 <tr style="outline: thin solid black;"><td  align="center" colspan="6">FRONT</td></tr>  
                 <tr><td colspan="6">&nbsp;</td></tr> 
                 @foreach($bus->seat as $seats)
@@ -229,18 +229,14 @@
                 <label>
                   @if($checked_seat->status=='FREE')
                   <img class="available"/>
-                  <input class="prices prices-{{$priceCounter}}" name="seats[]"  value="{{$seats->ticketno.'-'.$seats->seatno}}" type="checkbox" > 
 
                   @elseif($checked_seat->status=='RESERVED')
                   <img class="booked"/>
-                  <input class="prices prices-{{$priceCounter}}" name="seats[]" disabled value="{{$seats->ticketno.'-'.$seats->seatno}}" type="checkbox"> 
 
                   @elseif($checked_seat->status=='PAID')
-                  <input class="prices prices-{{$priceCounter}}" name="seats[]" disabled value="{{$seats->ticketno.'-'.$seats->seatno}}" type="checkbox"> 
 
                   @else
                   <img class="available"/>
-                  <input class="prices prices-{{$priceCounter}}" name="seats[]"  value="{{$seats->ticketno.'-'.$seats->seatno}}" type="checkbox"> 
                   @endif
                 </label>
               </td>
@@ -267,18 +263,14 @@
               <label>
                 @if($checked_seat->status=='FREE')
                 <img class="available"/>
-                <input class="prices prices-{{$priceCounter}}" name="seats[]"  value="{{$seats->ticketno.'-'.$seats->seatno}}" type="checkbox" > 
 
                 @elseif($checked_seat->status=='RESERVED')
                 <img class="booked"/>
-                <input class="prices prices-{{$priceCounter}}" name="seats[]" disabled value="{{$seats->ticketno.'-'.$seats->seatno}}" type="checkbox"> 
 
                 @elseif($checked_seat->status=='PAID')
-                <input class="prices prices-{{$priceCounter}}" name="seats[]" disabled value="{{$seats->ticketno.'-'.$seats->seatno}}" type="checkbox"> 
 
                 @else
                 <img class="available"/>
-                <input class="prices prices-{{$priceCounter}}" name="seats[]"  value="{{$seats->ticketno.'-'.$seats->seatno}}" type="checkbox"> 
                 @endif
               </label>
             </td>
@@ -308,7 +300,6 @@
        </div>
 
        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-       <button onclick="return confirm(Are you sure about your reservation?)" class="btn btn-primary">Reserve</button>
      </div> <!-- modal-footer -->
    </div>
  </div> <!-- modal-dialog -->
